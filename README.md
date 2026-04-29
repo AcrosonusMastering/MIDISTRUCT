@@ -1,4 +1,4 @@
-# Architect V26
+# MidiStruct
 ### Algorithmic MIDI Composer for REAPER
 
 > A full-featured procedural MIDI generation engine written in ReaScript Lua.  
@@ -15,7 +15,7 @@
 
 ## What It Does
 
-Architect V26 is not an arpeggiator or a random pattern generator.  
+MidiStruct is not an arpeggiator or a random pattern generator.  
 It is a **compositional engine** that applies real music theory rules to build a structured song from scratch.
 
 Given a chord progression like `Am:4 F:4 C:4 G:4` and a style (Pop, R&B, Lo-Fi, Rock…), it generates:
@@ -35,9 +35,9 @@ Every generation is identified by a **numeric seed** — the same seed always pr
 ## What Makes It Different
 
 Most commercial MIDI generators (Scaler 2, Captain Plugins, UJAM) generate patterns.  
-Architect V26 generates **music** — with compositional rules that most plugins don't implement at all.
+MidiStruct generates **music** — with compositional rules that most plugins don't implement at all.
 
-| Feature | Commercial plugins | Architect V26 |
+| Feature | Commercial plugins | MidiStruct |
 |---------|-------------------|---------------|
 | Global key inference | Rarely | ✅ Pitch class voting |
 | Melodic phrase structure | No | ✅ A-A'-B-A per 4 bars |
@@ -63,7 +63,7 @@ Architect V26 generates **music** — with compositional rules that most plugins
 
 ## Installation
 
-**1.** Download `architect_v26.lua` from this repository.
+**1.** Download `MidiStruct.lua` from this repository.
 
 **2.** Copy it to your REAPER Scripts folder:
 
@@ -76,7 +76,7 @@ Architect V26 generates **music** — with compositional rules that most plugins
 **3.** In REAPER: `Actions > Show Action List > New ReaScript`  
 Browse to the `.lua` file and confirm.
 
-**4.** *(Optional)* Assign a keyboard shortcut to `Script: architect_v26.lua`.
+**4.** *(Optional)* Assign a keyboard shortcut to `Script: MidiStruct.lua`.
 
 **No external dependencies.** The script uses only the Lua API embedded in REAPER.  
 Compatible with **REAPER 6.x and 7.x** on Windows, macOS and Linux.
@@ -306,9 +306,9 @@ The seed is always printed in the confirmation dialog and saved in
 ## File Structure
 
 ```
-architect_v26.lua              Main script (single file, no dependencies)
-architect_v26_user_manual_EN.md       User manual (English)
-architect_v26_technical_description_EN.md  Technical documentation (English)
+MidiStruct.lua              Main script (single file, no dependencies)
+MidiStruct_user_manual_EN.md       User manual (English)
+MidiStruct_technical_description_EN.md  Technical documentation (English)
 LICENSE                        GNU GPL v3
 README.md                      This file
 ```
@@ -318,8 +318,8 @@ README.md                      This file
 ## License
 
 ```
-Architect V26 — Algorithmic MIDI Composer for REAPER
-Copyright (C) 2025 [Your Name]
+MidiStruct — Algorithmic MIDI Composer for REAPER
+Copyright (C) 2025 Acrosonus Mastering
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
