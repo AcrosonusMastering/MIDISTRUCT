@@ -298,7 +298,6 @@ The seed is always printed in the confirmation dialog and saved in
 - The engine generates without evaluating. It does not know if a melody is good.
   That judgment is yours — generate multiple seeds and keep what works.
 - Drum note mapping follows GM standard. Non-GM drum plugins may require remapping.
-- Generation time scales with progression length: 2–5 sec for 2–4 chords, up to 12 sec for Blues 12 bars.
 
 ---
 
@@ -356,47 +355,3 @@ If you improve the musical engine, please document the compositional rule
 you implemented — not just the code change.
 
 ---
-
-## Changelog
-
-### V26 *(current)*
-- Fixed: named MIDI regions now correctly distinguish Chorus 1, Chorus 2, Chorus 3
-- Fixed: `nb` recalculated after secondary dominant insertion to prevent bass index errors
-- Fixed: removed unused `end_pos` variable from `write_midi_multi_track`
-
-### V25
-- Hook repetition ×3 rule (state machine with 4 variation levels)
-- Open/closed hi-hat logic per style (MIDI notes 42 vs 46)
-- Ride cymbal for Lo-Fi and Jazz (notes 51/53)
-- Color-coded REAPER regions with `isrgn=true`
-- Named MIDI items per section per track
-- 17 chord presets + manual entry
-- Style 7: Rock / Alt
-- CC#11 exponential swell on Pad (first-order step response curve)
-- CC#1 vibrato on Melody (onset after 1/3 of note duration)
-- Inter-track Call & Response via shared density map
-- Push & Pull global timing offset per section
-- Secondary dominants (V7/X insertion)
-- Fixed: CC `MIDI_InsertCC` argument order (missing `chan` parameter)
-
-### V24
-- A-A'-B-A phrase structure
-- Single climax note per section at step 10
-- Velocity crescendo toward climax
-- Walking bass with chromatic approach
-- Pad extensions (9th, 11th, 13th by section)
-- Intentional syncopation (steps 3, 7, 11)
-- Intra-bar density variation
-- Intro/Outro strip-down (drums only)
-- Bridge: borrowed chords + modulation +2 semitones
-- Chord substitutions (tritone, passing chords)
-- Automatic REAPER color-coded regions
-- Tempo automation (Bridge −2, Chorus 3 +1)
-- Fixed: minor chord detection (`string.match` vs `string.find`)
-- Fixed: track colors via `I_CUSTOMCOLOR` (correct REAPER API)
-- Fixed: melody dynamics (`dyn` applied to base_density)
-
----
-
-*Built entirely in REAPER ReaScript Lua — no external libraries, no VST wrapper, no GUI framework.*  
-*One file. Run it. Make music.*
