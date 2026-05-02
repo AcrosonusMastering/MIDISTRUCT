@@ -105,7 +105,7 @@ MIDI & Expression
     Exponential CC swell
 
     CC vibrato with delayed onset
-    </details>
+   
 ---
 
 ## Screenshots
