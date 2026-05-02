@@ -52,6 +52,60 @@ MidiStruct generates **music** — with compositional rules that most plugins do
 | REAPER color-coded regions | ✅ Per-section with Chorus 1/2/3 |
 | Full seed reproducibility | ✅ Custom LCG, 100% deterministic |
 And more
+
+Technical Music Specifications
+<details>Composition & Harmony
+
+    Automatically inferred tonality
+
+    Coherent global scale throughout the track
+
+    Secondary dominants
+
+    Harmonic extensions (9/11/13) on pads
+
+    Bridge modulation +2 semitones
+
+Arrangement & Structure
+
+    Hook with genre-signature intervals
+
+    3x inter-section repetition
+
+    Intra-phrase repetition (A-A'-B-A2)
+
+    Unique climax with velocity crescendo
+
+    Melodic contour per section
+
+    Stripped-back Intro/Outro
+
+    Inter-track call and response
+
+Instrumentation & Performance
+
+    Pad voice leading
+
+    Chromatic passing notes
+
+    Section-specific bassline with walking bass and chromatic approach
+
+    Open/closed hi-hats, ride cymbal
+
+    Snare rolls and ghost notes
+
+MIDI & Expression
+
+    Note durations driven by musical role
+
+    Rhythmic push & pull per section
+
+    Real MIDI swing
+
+    Exponential CC swell
+
+    CC vibrato with delayed onset
+    </details>
 ---
 
 ## Screenshots
