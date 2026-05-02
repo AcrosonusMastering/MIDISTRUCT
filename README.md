@@ -109,7 +109,7 @@ MIDI & Expression
 ---
 
 ## Screenshots
-<img width="1919" height="979" alt="Image" src="https://github.com/user-attachments/assets/cdbc93f9-c42d-4c34-a49a-7b1cca971eff" />
+<img width="943" height="989" alt="Image" src="https://github.com/user-attachments/assets/983e35e4-39a7-4628-b5ee-d806ea7cf6c2" />
 
 
 ---
