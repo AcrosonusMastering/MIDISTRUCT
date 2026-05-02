@@ -37,27 +37,26 @@ Every generation is identified by a **numeric seed** — the same seed always pr
 Most commercial MIDI generators (Scaler 2, Captain Plugins, UJAM) generate patterns.  
 MidiStruct generates **music** — with compositional rules that most plugins don't implement at all.
 
-| Feature | Commercial plugins | MidiStruct |
-|---------|-------------------|---------------|
-| Global key inference | Rarely | ✅ Pitch class voting |
-| Melodic phrase structure | No | ✅ A-A'-B-A per 4 bars |
-| Hook repetition rule ×3 | No | ✅ State machine |
-| Push & Pull per section | No | ✅ Chorus push / Verse pull |
-| Inter-track Call & Response | No | ✅ Shared density map |
-| Secondary dominants | No | ✅ 35% insertion probability |
-| Walking bass with approach | No | ✅ Chromatic approach note |
-| CC swell (exponential curve) | No | ✅ 1st-order step response |
-| Open/closed hi-hat logic | No | ✅ Per-style hat_open_steps |
-| Ride cymbal (lofi/jazz) | No | ✅ Ride bell on beats 1 & 3 |
-| REAPER color-coded regions | No | ✅ Per-section with Chorus 1/2/3 |
-| Full seed reproducibility | No | ✅ Custom LCG, 100% deterministic |
-
+| Feature |  MidiStruct |
+|---------|---------------|
+| Global key inference | ✅ Pitch class voting |
+| Melodic phrase structure | ✅ A-A'-B-A per 4 bars |
+| Hook repetition rule ×3  | ✅ State machine |
+| Push & Pull per section | ✅ Chorus push / Verse pull |
+| Inter-track Call & Response | ✅ Shared density map |
+| Secondary dominants | ✅ 35% insertion probability |
+| Walking bass with approach | ✅ Chromatic approach note |
+| CC swell (exponential curve) | ✅ 1st-order step response |
+| Open/closed hi-hat logic | ✅ Per-style hat_open_steps |
+| Ride cymbal (lofi/jazz) | ✅ Ride bell on beats 1 & 3 |
+| REAPER color-coded regions | ✅ Per-section with Chorus 1/2/3 |
+| Full seed reproducibility | ✅ Custom LCG, 100% deterministic |
+And more
 ---
 
 ## Screenshots
+<img width="1919" height="979" alt="Image" src="https://github.com/user-attachments/assets/cdbc93f9-c42d-4c34-a49a-7b1cca971eff" />
 
-> *Add your own screenshots here after testing in REAPER.*  
-> Suggested: timeline overview, piano roll of the melody, CC#11 curve on the pad track.
 
 ---
 
