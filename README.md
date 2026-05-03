@@ -1,4 +1,4 @@
-# MidiStruct
+# MidiStruct (‼️‼️‼️SCrIPT IN THE RELEASE ======>>>>>>>>>>>>>
 ### Algorithmic MIDI Composer for REAPER
 
 > A full-featured procedural MIDI generation engine written in ReaScript Lua.  
