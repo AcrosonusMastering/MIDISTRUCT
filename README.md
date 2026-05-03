@@ -145,7 +145,7 @@ Compatible with **REAPER 6.x and 7.x** on Windows, macOS and Linux.
 2. Place the edit cursor where you want the track to start
 3. Run the script
 4. Fill in the 3 dialogs (see below)
-5. Wait 3–10 seconds
+5. Wait 1 seconds
 6. Press Play
 
 ---
