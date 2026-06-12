@@ -162,6 +162,64 @@ The engine is structured around three main layers:
 
 ---
 
+MIDISTRUCT V2.0 Master Studio Engine - Changelog
+
+(Compared to V1)
+
+UI & Core Architecture
+
+    ReaImGui Integration: Completely replaced the native REAPER GetUserInputs dialogue boxes with a comprehensive, interactive RealmGui interface featuring collapsible headers, real-time toggles, and dropdowns.
+
+    High-Performance Cache: Localized standard math functions (m_floor, m_sin, m_pi, etc.) at the top of the script to significantly optimize DSP performance and calculation speeds during generation.
+
+    Advanced Generation Logging: The MIDISTRUCT_History.txt log has been expanded to record all active UI toggles, hybridization ratios, and detailed arrangement structures.
+
+Algorithmic Harmony & Melody
+
+    Predictive Modal Interchange: The engine can now intelligently borrow chords from parallel modes (e.g., swapping a major subdominant for a minor IV) at the end of progressions.
+
+    Secondary Diminished Chords: Added logic to allow diminished passing chords to cohabitate smoothly with secondary dominants for smoother harmonic transitions.
+
+    Optimal Voice Leading: Implemented keyboardist-style voice conduction to minimize interval jumps between chord changes.
+
+    Evolving Voicings (Drop 2/Drop 3): Chorus pad voicings can now automatically apply Drop 2 or Drop 3 chord inversions to open up the harmonic spectrum.
+
+    Smart Grace Notes & Ornamentations: The melody engine now dynamically inserts scale-aware grace notes and micro-ornamentations on strong beats.
+
+    Question & Answer Phrasing: Added structural logic to enforce tension on "A" phrases (ending on the dominant) and resolution on "A2/Ap" phrases (ending on the tonic).
+
+Rhythm & Groove Engine
+
+    Euclidean Percussion: Added a generator for Euclidean rhythms (e.g., 3/16, 5/16) to create cyclic, polyrhythmic ghost note patterns.
+
+    Organic Groove Maps: Replaced static swing with style-specific sub-step time-warping arrays (Lofi, R&B, House, etc.) that shift individual 16th notes to mimic human pocket-playing.
+
+    Deterministic Hybrid Groove: The humanizer now blends a fixed, deterministic "push/pull" pocket with Gaussian micro-variances, simulating human breath and consistency rather than pure RNG noise.
+
+    Drum Linear Fills & Flams: Snare rolls and fills now utilize linear drumming logic to avoid physically impossible overlapping hits, incorporating realistic flams on strong beats.
+
+    Laid-back Snare & Groove Pocket Hats: Toggles added to micro-shift the snare late on beats 2 and 4, while hi-hat velocities now duck and weave around kick drum hits.
+
+Bass & Arrangement
+
+    Diatonic Bass Approach: The bassline can now walk using in-scale conjoint movement rather than strictly chromatic approach notes.
+
+    Physical Bass Groove: Added Slap-style Bass Octave Jumps and rhythmic Bass Ghost Notes to enhance the physical feel of the low-end.
+
+    Narrative Arc (Macro-Dynamics): Velocity and intensity now scale globally across the arrangement, building naturally from the Intro through the final Chorus.
+
+    Beat Drop Silence: The engine can now algorithmically mute the kick, bass, and pads in the final bar of a Pre-Chorus to create modern "beat drop" transitions.
+
+    Polyrhythmic Pads: Pads can now trigger in a hypnotic 3-vs-4 polyrhythm instead of standard block chords.
+
+Expression & MIDI Automation
+
+    MPE CC Automations: Automatically generates CC74 (Filter) and CC1 (Tension) curves that track the dynamics and intensity of the current section.
+
+    Analog Pitchbend Sag: Long synth notes now simulate the analog pitch instability of hardware synthesizers by generating custom pitch-bend curves that "sag" and recover.
+
+    Pitch-Linked Dynamics: Higher melodic notes naturally trigger higher MIDI velocities to mimic physical acoustic instruments.
+
 ## License
 
 Copyright © 2026 Acrosonus Mastering Studio  
