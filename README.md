@@ -1,347 +1,169 @@
-**🎹 MIDISTRUCT V2**
-=======================
+# MIDISTRUCT V2.0 — Master Studio Edition
+
+**Algorithmic MIDI Composer for REAPER**  
+*Developed by [Acrosonus Mastering](https://acrosonus.com)*  
+*Licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)*
+
+---
+
+MIDISTRUCT is a ReaScript (Lua) that generates complete, multi-track MIDI arrangements directly inside REAPER from a chord progression. It composes drums, bass, pad/chords, melody, and counter-melody simultaneously, applying over 30 professional-grade musicality algorithms in a single click.
+
+---
+
+## Features
+
+### Core Generation Engine
+- **Full arrangement from chords** — input any chord progression (e.g. `Am:4 F:4 C:4 G:4`) and receive a complete, structured song with Intro, Verse, Pre-Chorus, Chorus, Bridge, and Outro sections
+- **5 dedicated MIDI tracks** — Drums, Bass, Pad-Chords, Melody, Counter-Melody, each created and color-coded automatically
+- **Automatic key and scale inference** — detects the tonal center from the chord progression and derives the appropriate scale for melodic content
+- **Deterministic seeding** — every generation is reproducible via a fixed random seed, or truly random when set to 0
+
+### Style System
+- **7 production styles** — Pop, Techno (Peak), Lo-Fi Hip Hop, R&B/Soul, Classic House, Trap/Future, Rock/Alt
+- **Style hybridization** — blend two styles with a continuous mix ratio, interpolating BPM, swing, energy, legato, groove maps, and pattern data
+- **Per-style groove maps** — sub-step time-warping tables (Lo-Fi, R&B, Pop, House, Rock…) applied to every instrument
+
+### Musicality Algorithms (30+ options)
+
+**Humanization & Feel**
+- Deterministic Groove — fixed push/pull pocket with a 25% Gaussian noise layer for a consistent-yet-human feel
+- MIDI Sidechain Drums — snare events duck hi-hat velocity automatically
+- Rubato engine — bar-position-aware micro-timing shifts (phrase breath, pre-downbeat anticipation)
+- Organic Groove Maps — per-style sub-step offsets applied globally across all instruments
+
+**Melody & Phrasing**
+- Core melodic motif system — generates a signature phrase from style-specific intervals and applies it with evolution across sections (transposition, octave shift, harmonization)
+- Question & Answer phrasing — alternates tension/open endings (A phrases) with resolution cadences (A2/B phrases)
+- Melodic Breath (Asphyxia Rule) — forces a rest bar after 3 consecutive melodic bars
+- Smart Grace Notes — adds leading ornaments to motif landing points
+- Melodic Motif Syncopation — stochastically shifts motif step positions by ±1
+- Pitch-Linked Dynamics — scales note velocity proportionally to pitch height
+- Analog Pitchbend Sag — simulates analog synth pitch droop on sustained notes
+
+**Harmony & Voice Leading**
+- Optimal Voice Leading — minimizes inter-chord distance by evaluating all inversions across octaves
+- Evolving Voicings (Drop 2/3) — opens dense chorus voicings via drop-2 or drop-3 transformations
+- Harmonic Anticipation — pads land one 16th-note early on chord changes (≈40% probability)
+- Secondary Diminished Chords — inserts chromatic passing diminished chords between whole-step changes
+- Secondary Dominants — probabilistically inserts V7/x chords before chord arrivals
+- Predictive Modal Interchange — borrows the subdominant as a parallel minor on final chords
+- Pre-Chorus Rhythmic Harmonic Pedal — locks the bass to the tonic pedal through pre-chorus bars
+
+**Rhythm & Drums**
+- Euclidean Sequences — generates rhythmically even polyrhythmic percussion patterns (k-in-n algorithm)
+- Linear Drumming — realistic fills and flam articulations, no simultaneous hits
+- Hi-Hat Groove Pocket — velocity-modulates hi-hats relative to kick and beat position
+- Laid-Back Snare — adds a +16-tick micro-delay on backbeats for a behind-the-beat feel
+- Metric Velocity Hierarchy — scales velocity by beat strength (downbeat > mid > upbeat > off-beat)
+- Beat Drop Silence — clears the last 4 steps of the pre-chorus for a dramatic drop entrance
+
+**Bass**
+- Diatonic Bass Approach — in-scale conjoint movement toward chord root on bar transitions
+- Fluid Bass Passing Notes — chromatic half-step and third-based approach notes
+- Bass Ghost Notes — inserts dead/grace notes one step before accented bass hits
+- Bass Octave Jumps — adds an upper-octave pop articulation on syncopated bass steps
+
+**Dynamics & Structure**
+- Narrative Arc (Macro-Dynamics) — applies per-section dynamic scaling that evolves within each section (Intro fades in, Outro fades out, Chorus peaks)
+- Strict Counterpoint via Transformation — generates counter-melody by retrograde or contrary motion from the main phrase cache
+- Contrary Counterpoint — forces counter-melody to move in the opposite direction of the main melody
+- Polyrhythmic Pads — places pad hits on a 3-against-4 grid for rhythmic tension
+- MPE CC Automations — generates CC74 (filter) and CC1 (mod/tension) curves on pad and pre-chorus builds
+
+### Other Capabilities
+- **17 chord preset progressions** spanning Pop, Jazz, Soul, Rock, Blues, House, and Techno
+- **Named chord syntax** — supports maj, min, dim, aug, dim7, maj7, m7, 7, sus2, sus4, add9, 9, m9, 5 chord types with chromatic roots and variable bar duration
+- **Colored section regions** — REAPER timeline markers created per section with color-coded overlays
+- **Generation history log** — appends a detailed plain-text report to `MIDISTRUCT_History.txt` in the project folder after each generation
+- **Persistent settings** — all parameters saved and restored between sessions via REAPER's ExtState system
+- **Full undo support** — generation is wrapped in a REAPER undo block
+
+---
+
+## Requirements
+
+- [REAPER](https://www.reaper.fm/) 7.0 or later
+- **ReaImGui** extension (install via [ReaPack](https://reapack.com/) → ReaTeam Extensions → `reaper_imgui`)
+
+---
+
+## Installation
+
+1. Download `midistruct_v11_ultimate.lua`
+2. Place it in your REAPER scripts folder:
+   - Windows: `%APPDATA%\REAPER\Scripts\`
+   - macOS: `~/Library/Application Support/REAPER/Scripts/`
+3. In REAPER: `Actions > Show action list > Load` → select the file
+4. Optionally assign it to a toolbar button or keyboard shortcut
+
+---
+
+## Usage
 
-**Master Studio Engine for REAPER**
------------------------------------
+1. Run the script from the Actions list or your assigned shortcut
+2. The MIDISTRUCT V11.0 window opens with 7 collapsible panels:
+   - **Harmony & Chord Progression** — enter chords manually or pick a preset
+   - **Playing Style Hybridization** — select primary style, optional secondary style, and mix ratio
+   - **Musical Humanization & Phrasing** — groove and musicality toggles
+   - **Technical & Musical Evolutions** — advanced rhythm and harmony algorithms
+   - **Master Studio Processing** — director-level dynamics and voice leading
+   - **Groove & Performance Options** — articulations, ornaments, and micro-expressions
+   - **General Writing Parameters** — complexity (1–10), random seed, track replacement
+3. Click **GENERATE ALGORITHMIC ARRANGEMENT IN REAPER**
+4. Five tracks appear at the cursor position. Assign instruments and mix.
 
-A full-featured procedural MIDI generation engine written in ReaScript Lua.
+### Chord Syntax
 
-From a chord progression and a style, it generates a complete, humanized multi-track arrangement in seconds, directly inside REAPER.
+```
+Root[Quality]:Duration  ...
+```
 
-**🚀 What It Does**
--------------------
+Examples:
+```
+Am:4 F:4 C:4 G:4
+Cmaj7:2 Am7:2 Fmaj7:2 G7:2
+Dm9:4 Gmaj7:4 Cmaj7:4 Am7:4
+```
 
-**MIDISTRUCT is not a simple arpeggiator or a random pattern generator.** It is a compositional engine that applies real music theory rules to build a structured song from scratch.
+Supported qualities: `maj` `min` / `m` `dim` `aug` `dim7` `maj7` `m7` `7` `sus4` `sus2` `add9` `9` `m9` `5`  
+Duration is in bars (integer). Omitting the quality defaults to major.
 
-Given a chord progression like Am:4 F:4 C:4 G:4 and a style (Pop, R&B, Lo-Fi, Rock…), it generates:
+---
 
-*   **5 separate, color-coded MIDI tracks** — Drums, Bass, Pad/Chords, Lead Melody, Counter-Melody.
-    
-*   **A beautifully integrated UI** using ReaImGui directly inside REAPER.
-    
-*   **Named MIDI items** per section on every track.
-    
-*   **Color-coded timeline regions** — Intro, Verse, PreChorus, Chorus, Bridge, Outro.
-    
-*   **MPE & CC Automations** — CC74 Filter sweeps, CC1 Tension curves, and Vibrato.
-    
-*   **Humanized Groove Mechanics** — Push/pull per section, Gaussian micro-variations, and rubato.
-    
-*   **A text report** detailing the seed, key, structure, and generation history.
-    
+## Track Layout
 
-**Every generation is identified by a numeric seed** — the same seed always produces the exact same result.
+| Track | Color | Content |
+|---|---|---|
+| `[MIDISTRUCT] DRUMS` | Red | Kick, snare, hi-hat, ghost notes, fills, crash — channel 10 |
+| `[MIDISTRUCT] BASS` | Blue | Root-position bass line with approach notes and articulations |
+| `[MIDISTRUCT] PAD-CHORDS` | Purple | Voiced chord pads with CC11 swell curves and optional CC74/CC1 |
+| `[MIDISTRUCT] MELODY` | Green | Main melodic line with CC1 vibrato and optional pitchbend sag |
+| `[MIDISTRUCT] COUNTER-MEL` | Orange | Counterpoint or call-and-response secondary melodic voice |
 
-**🌟 What Makes It Different**
-------------------------------
+Each track is split into MIDI items per section (Intro, Verse, Pre-Chorus, Chorus, Bridge, Outro) for easy arrangement.
 
-Most commercial MIDI generators (Scaler 2, Captain Plugins, UJAM) generate static patterns. **MIDISTRUCT generates music** — with compositional rules that most plugins don't implement at all, acting as a virtual studio partner.
+---
 
-**Feature**
+## Architecture Notes
 
-**MIDISTRUCT V11.0**
+The engine is structured around three main layers:
 
-**Style Morphing**
+**`RNG` / `Humanizer`** — deterministic LCG pseudo-random number generator with Gaussian timing, velocity, and rubato methods. All stochastic decisions in the engine are routed through this object, making every generation reproducible from its seed.
 
-✅ Blend two styles (e.g., 60% House + 40% Trap)
+**`Engine`** — the composition core. Accepts style indices, mix ratio, complexity, seed, and option flags. Methods:
+- `parse_chords()` — tokenizes chord text into pitch-class and quality data
+- `_infer_key()` — derives global scale from chord weights
+- `_build_core_motif()` — generates the song's signature melodic phrase
+- `_apply_secondary_dominants()` — probabilistically enriches the harmony
+- `_gen_melody()` / `_gen_counter_melody()` / `_gen_drums()` / `_gen_bass()` / `_gen_pad()` — per-bar MIDI data generators
+- `generate_song()` — orchestrates the full structure and returns bar data
 
-**Global Key Inference**
+**MIDI Writer (`write_midi_multi_track`)** — maps bar data onto REAPER items using `CreateNewMIDIItemInProj` and `MIDI_InsertNote`. Section-grouped items allow Fixed Item Lanes workflow. All PPQ timing includes swing offsets, groove map shifts, push/pull values, and humanizer output.
 
-✅ Pitch class voting and automatic scale detection
+---
 
-**Advanced Voice Leading**
+## License
 
-✅ Calculates minimum distance for chord inversions
-
-**Deterministic Humanization**
-
-✅ Gaussian algorithms for timing/velocity jitter
-
-**Euclidean Rhythms**
-
-✅ Cyclic polyrhythmic ghost notes for percussion
-
-**Inter-track Call & Response**
-
-✅ Counter-melody reads the main melody's density map
-
-**Secondary Dominants**
-
-✅ Automatic injection of passing diminished/dominant chords
-
-**Question & Answer Phrasing**
-
-✅ Phrases resolve to Dominant (Q) or Tonic (A)
-
-**MPE & CC Swells**
-
-✅ Advanced automation curves for pads and leads
-
-**ReaImGui Interface**
-
-✅ Modern, non-blocking UI within REAPER
-
-**Full Seed Reproducibility**
-
-✅ Custom PRNG, 100% deterministic
-
-**🎵 Features Breakdown**
--------------------------
-
-### **Composition & Harmony**
-
-*   **Automatically inferred tonality** and coherent global scale.
-    
-*   **Voice leading optimized** like a real keyboardist (Drop 2/Drop 3 voicings in choruses).
-    
-*   **Modal interchange** and secondary dominant injection.
-    
-*   **Smart grace notes** and contrary movement for counter-melodies.
-    
-
-### **Arrangement & Structure**
-
-*   **4-bar phrase cycles:** statement → slight variation → contrast → resolution (A-A'-B-A2).
-    
-*   **Unique climax notes** forced in Chorus/PreChorus with velocity crescendos.
-    
-*   **Melodic contours** specific to sections (e.g., "wave" for Verse, "peak" for Chorus).
-    
-*   **Stripped-back Intro/Outro** with progressive macro-dynamics.
-    
-
-### **Instrumentation & Performance**
-
-*   **Section-specific basslines** with walking bass, chromatic approaches, disco octaves, and dead notes.
-    
-*   **Open/closed hi-hats, ride cymbals, and MIDI sidechaining** (snare ducks hi-hat velocity).
-    
-*   **Beat drop silence:** smartly mutes bass and pads right before a heavy chorus.
-    
-
-### **MIDI & Expression**
-
-*   **Rhythmic push & pull** per section (Chorus rushes slightly, Verse lays back).
-    
-*   **Organic groove maps** applying sub-step time-warping per genre.
-    
-*   **Analog pitchbend sag** simulating vintage synthesizer drift on sustained notes.
-    
-*   **Exponential CC swell** for pads.
-    
-
-**📸 Screenshots**
-------------------
-
-_The modern ReaImGui interface directly inside REAPER._
-
-_Generated colored tracks, regions, and named items in the arrange view._
-
-**📥 Installation**
--------------------
-
-1.  **Install ReaImGui** via ReaPack (ReaTeam Extensions) in REAPER. _This is mandatory._
-    
-2.  **Download** MIDISTRUCT\_V2.lua from this repository.
-    
-3.  **Copy it** to your REAPER Scripts folder:
-    
-
-**OS**
-
-**Path**
-
-**Windows**
-
-%APPDATA%\\REAPER\\Scripts\\
-
-**macOS**
-
-~/Library/Application Support/REAPER/Scripts/
-
-**Linux**
-
-~/.config/REAPER/Scripts/
-
-1.  In REAPER: Go to Actions > Show Action List > New action... > Load ReaScript. Browse to the .lua file and confirm.
-    
-2.  _(Optional)_ Assign a keyboard shortcut or toolbar button to Script: MIDISTRUCT\_V2.lua.
-    
-
-**⚡ Quick Start**
------------------
-
-1.  Open a blank REAPER project (or an existing one).
-    
-2.  Run the MIDISTRUCT script. A modern ReaImGui window will appear.
-    
-3.  Select a **Chord Preset** (or type your own, e.g., Am:4 F:4 C:4 G:4).
-    
-4.  Select your **Primary Style** (e.g., Pop, Lo-Fi, Techno).
-    
-5.  Tweak any **Master Studio toggles** (like Beat Drop, MPE CC Curves, or Euclidean Rhythms).
-    
-6.  Click the large green **GENERATE ALGORITHMIC ARRANGEMENT** button.
-    
-7.  Assign VST instruments to the 5 newly created tracks and press Play!
-    
-
-**🎛️ Usage: The ReaImGui Interface**
--------------------------------------
-
-Unlike older versions, V11 uses a single, beautifully organized window with 7 collapsible sections:
-
-### **1\. Harmony & Chord Progression**
-
-Select from 17 built-in presets (Jazz ii-V-I, Andalusian, Neo-Soul, etc.) or enter manual chords.
-
-*   **Syntax:** NOTE\[QUALITY\]:BARS separated by spaces.
-    
-*   **Example:** Am7:4 D9:4 Gmaj7:4 Cmaj7:4
-    
-
-### **2\. Playing Style Hybridization**
-
-Choose a Primary Style and an optional Secondary Style.
-
-*   **Styles:** Pop, Techno, Lo-Fi Hip Hop, R&B/Soul, Classic House, Trap/Future, Rock/Alt.
-    
-*   **Mix Ratio:** A slider (0-100%) blends the BPM, swing, scale tendencies, and drum patterns of the two styles.
-    
-
-### **3\. Musical Humanization & Phrasing**
-
-Toggle core interaction features like Deterministic Groove, MIDI Sidechain Drums, Diatonic Bass Approach, and Question & Answer Phrasing.
-
-### **4\. Technical & Musical Evolutions (V10/V11)**
-
-Enable cutting-edge features:
-
-*   **Euclidean Sequences:** Adds cyclic polyrhythmic ghost percussions.
-    
-*   **Strict Counterpoint:** Forces the counter-melody to use classical inversion/retrograde transformations.
-    
-*   **MPE CC Automations:** Automatically writes CC74 and CC1 automation.
-    
-
-### **5\. Master Studio Processing**
-
-Shape the narrative arc with Macro-Dynamics (global volume swelling through the arrangement), Physical Groove (bass ghost notes), and Predictive Modal Interchange.
-
-### **6\. Groove & Performance Options**
-
-Legacy toggles to heavily customize the performance: Humanized Strumming, Analog Pitchbend Sag, Beat Drop Silence, Linear Drumming, and more.
-
-### **7\. General Writing Parameters**
-
-Set the global **Complexity (1-10)** (controls melody density and ornamentations), define a specific **Seed**, and choose whether to replace old MIDISTRUCT tracks automatically.
-
-**🎚️ Output & Track Reference**
---------------------------------
-
-After a standard run, you get:
-
-**Track**
-
-**Color**
-
-**Content**
-
-**\[MIDISTRUCT\] DRUMS**
-
-🔴 Red
-
-Kick, Snare, HH, Ride, Ghost notes, Fills, Crash
-
-**\[MIDISTRUCT\] BASS**
-
-🔵 Blue
-
-Monophonic, octaves 2–3, walking + chromatic approach
-
-**\[MIDISTRUCT\] PAD-CHORDS**
-
-🟣 Purple
-
-Voiced chords, octaves 4–5, CC#11/CC74 swells
-
-**\[MIDISTRUCT\] MELODY**
-
-🟢 Green
-
-Lead line, octaves 4–5, CC#1 vibrato & pitch bends
-
-**\[MIDISTRUCT\] COUNTER-MEL**
-
-🟠 Orange
-
-Responds in melody silences, contrary motion
-
-**🎹 VSTi Recommendations**
----------------------------
-
-To get the most out of the generated MIDI, here are some recommended instruments:
-
-**Track**
-
-**Suggestions**
-
-**DRUMS**
-
-Superior Drummer, Addictive Drums, XO, Battery, MT-Power Drumkit (Free)
-
-**BASS**
-
-Modo Bass, Trilian, Scarbee Bass, or any analog synth bass (e.g., Diva, Serum)
-
-**PAD-CHORDS**
-
-Omnisphere, Diva, Spitfire LABS (Free), Arturia Pigments _(Ensure CC74/CC11 mapping)_
-
-**MELODY**
-
-Synthesizer V, Kontakt leads, Serum, or expressive physical modeling synths
-
-**COUNTER-MEL**
-
-Woodwinds, bells, or a contrasting synth pluck (e.g., DX7 emulations)
-
-**🎲 Working with Seeds**
--------------------------
-
-*   Seed = 0 → **Random.** Different result every run.
-    
-*   Seed = 1234567 → **Reproducible.** Identical result every run, forever.
-    
-
-**Recommended workflow:**
-
-1.  Generate multiple times with Seed = 0.
-    
-2.  Check the REAPER arrange view and quickly listen to the result.
-    
-3.  If you hear a motif or groove you love, check the generated MIDISTRUCT\_History.txt in your project folder to find its seed.
-    
-4.  Reload the script, enter that exact seed, and you can regenerate that specific idea while tweaking instrumentation or mixing.
-    
-
-_The script gives you the 80% foundation; you provide the 20% human touch!_
-
-**⚠️ Known Limitations**
-------------------------
-
-*   **MPE/CC Routings:** The engine generates CC74, CC1, and Pitchbend data. If your VSTi does not respond to these, you may need to map them internally (e.g., route CC74 to the synth's filter cutoff).
-    
-*   **Drum Mapping:** Drum notes strictly follow the General MIDI (GM) standard (Kick 36, Snare 38, etc.). Non-GM drum plugins will require MIDI remapping.
-    
-
-**📜 License & Credits**
-------------------------
-
-**Development and Design:** Acrosonus Mastering Studio (C) 2026
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
-
-**Dependencies:** Massive thanks to the incredible team behind the REAPER API and the ReaImGui framework by cfillion.
-
-_Happy Composing! - Acrosonus Mastering Studio_
+Copyright © 2026 Acrosonus Mastering Studio  
+Released under the **GNU General Public License v3.0** — see [LICENSE](LICENSE) for full terms.  
+You are free to use, modify, and redistribute this script under the same license.
