@@ -1,5 +1,11 @@
 # MIDISTRUCT V2.0 — Master Studio Edition
 
+
+Download release ➡️➡️➡️➡️➡️➡️➡️
+If you are lost on github, direct link: https://drive.google.com/file/d/1rRGVj7T5zgmpo5xomjbfCPtqAQ1XcXkV/view?usp=sharing
+
+
+
 **Algorithmic MIDI Composer for REAPER**  
 *Developed by [Acrosonus Mastering](https://acrosonus.com)*  
 *Licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)*
