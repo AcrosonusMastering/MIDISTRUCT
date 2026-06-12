@@ -8,6 +8,7 @@
 
 MIDISTRUCT is a ReaScript (Lua) that generates complete, multi-track MIDI arrangements directly inside REAPER from a chord progression. It composes drums, bass, pad/chords, melody, and counter-melody simultaneously, applying over 30 professional-grade musicality algorithms in a single click.
 
+<a href="https://ibb.co/ynZ4HqQG"><img src="https://i.ibb.co/QFTDyMKz/Capture-d-cran-2026-06-12-154236.png" alt="Capture-d-cran-2026-06-12-154236" border="0"></a><br /><br />
 ---
 
 ## Features
